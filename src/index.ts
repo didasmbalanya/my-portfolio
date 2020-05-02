@@ -1,4 +1,3 @@
-// import { UserResolver } from "./modules/user/user.resolver";
 import { buildSchema } from "type-graphql";
 import express from "express";
 import { createConnection } from "typeorm";
@@ -17,6 +16,7 @@ export const startServer = async () => {
     const apolloServer = new ApolloServer({
       schema,
       playground: true,
+      context: ({ req, res}) => ({ req, res})
     });
 
     const cors = {

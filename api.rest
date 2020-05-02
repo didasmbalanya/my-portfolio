@@ -20,3 +20,14 @@ mutation {
     phoneAlt:"+250786922399"
   })
 }
+###
+
+POST {{server}}
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation {
+  login(email:"didasmbalanya@gmail.com", password: "Didas12"){
+    accessToken
+  }
+}
