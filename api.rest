@@ -1,0 +1,22 @@
+@server=http://localhost:4000/graphql 
+
+POST {{server}}
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation {
+  register(registerInput:{
+    title:"    Software Engineer",
+    description: "Mainly Backend Engineer",
+    firstname: "Didas"
+    lastname:"Mbalanya"
+    email: "didasmbalanya@gmail.com"
+    gender:"Male"
+    username:"obione"
+    password:"Didas12"
+    github:"github.com"
+    linkedin:"linkedin.com"
+    phone:"+254705520482"
+    phoneAlt:"+250786922399"
+  })
+}
