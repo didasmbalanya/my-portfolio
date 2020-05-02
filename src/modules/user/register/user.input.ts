@@ -1,4 +1,4 @@
-import { InputType, Field,  } from "type-graphql";
+import { InputType, Field } from "type-graphql";
 import { Trim, NormalizeEmail } from "class-sanitizer";
 import {
   haveUppercase,
@@ -11,6 +11,7 @@ import {
   Matches,
   IsFQDN,
   IsPhoneNumber,
+  IsIn,
 } from "class-validator";
 
 @InputType()
@@ -40,13 +41,14 @@ export class RegisterInput {
   username: string;
 
   @Field()
-  @IsEmail()
   @NormalizeEmail()
   @Trim()
+  @IsEmail()
   email: string;
 
   @Field()
   @Trim()
+  @IsIn(["male", "female", "other"])
   gender: string;
 
   @Field()

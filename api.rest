@@ -10,8 +10,8 @@ mutation {
     description: "Mainly Backend Engineer",
     firstname: "Didas"
     lastname:"Mbalanya"
-    email: "didasmbalanya@gmail.com"
-    gender:"Male"
+    email: "    didasmbalanya3@gmail.com    "
+    gender:"MAle"
     username:"obione"
     password:"Didas12"
     github:"github.com"
