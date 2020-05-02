@@ -1,12 +1,20 @@
 import { hash, compare } from "bcrypt";
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
+
+const accessSecret = process.env.ACCESS_TOKEN_SECRET!;
+const refreshSecret = process.env.REFRESH_TOKEN_SECRET!;
 
 export const hasher = (value: string): Promise<string> => hash(value, 10);
 export const passCompare = (password: string, encrypted: string) =>
   compare(password, encrypted);
 
 export const getAccessToken = (data: any): string =>
-  sign(data, process.env.ACCESS_TOKEN_SECRET!, { expiresIn: "15m" });
+  sign(data, accessSecret, { expiresIn: "15m" });
 
-export const getRefreshToken = (data: any): string =>
-  sign(data, process.env.REFRESH_TOKEN_SECRET!);
+export const getRefreshToken = (data: any): string => sign(data, refreshSecret);
+
+export const jwtVerifyCustom = (token: string, tokenType = "access") => {
+  const secret =
+    tokenType.toLowerCase() === "access" ? accessSecret : refreshSecret;
+  return verify(token, secret);
+};

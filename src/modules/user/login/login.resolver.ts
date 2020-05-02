@@ -1,7 +1,11 @@
 import { MyContext } from "./../../../types/myTypes";
 import { LoginResponse } from "./type";
 import { Resolver, Mutation, Arg, Ctx } from "type-graphql";
-import { passCompare, getAccessToken, getRefreshToken } from "./../../../utils/authUtils";
+import {
+  passCompare,
+  getAccessToken,
+  getRefreshToken,
+} from "./../../../utils/authUtils";
 import { invalidLogin } from "./../../../utils/constants";
 import { User } from "./../../../entity/User";
 
@@ -22,8 +26,8 @@ export class LoginResolver {
     if (!user) throw Error(invalidLogin);
     const valid = passCompare(password, user.password);
     if (!valid) throw Error(invalidLogin);
-    const accessToken = getAccessToken({ id: user.id, email: user.email });
-    const refreshToken = getRefreshToken({ id: user.id });
+    const accessToken = getAccessToken({ userId: user.id, email: user.email });
+    const refreshToken = getRefreshToken({ userId: user.id });
 
     res.cookie("rt", refreshToken);
 

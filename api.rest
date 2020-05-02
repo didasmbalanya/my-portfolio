@@ -1,4 +1,5 @@
-@server=http://localhost:4000/graphql 
+@server=http://localhost:4000/graphql
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGlkYXNtYmFsYW55YUBnbWFpbC5jb20iLCJpYXQiOjE1ODg0NDg4NzIsImV4cCI6MTU4ODQ0OTc3Mn0.Iroi13utZdOWtD2L7lCyKDt733uIh5n6D09PTHoqo_w
 
 POST {{server}}
 Content-Type: application/json
@@ -29,5 +30,27 @@ X-Request-Type: GraphQL
 mutation {
   login(email:"didasmbalanya@gmail.com", password: "Didas12"){
     accessToken
+  }
+}
+###
+
+POST {{server}}
+Content-Type: application/json
+X-Request-Type: GraphQL
+Authorization: {{token}}
+
+query {
+  me{
+    id
+    title
+    description
+    firstname
+    lastname
+    email
+    gender
+    github
+    linkedin
+    phone
+    phoneAlt
   }
 }
