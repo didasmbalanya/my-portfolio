@@ -5,7 +5,7 @@ import { User } from "./../../../entity/User";
 import { Resolver, Query, UseMiddleware, Ctx } from "type-graphql";
 
 @Resolver()
-export class meReslver {
+export class MeReslver {
   @Query(() => User)
   @UseMiddleware(isAuth)
   async me(@Ctx() { payload }: MyContext) {

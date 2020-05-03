@@ -5,3 +5,4 @@ export const haveDigits = "should contain digits";
 // db errors
 export const invalidLogin = "Invalid credentails";
 export const noAuth = "Not authenticated";
+export const cookiename = "portf"

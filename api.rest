@@ -1,7 +1,8 @@
-@server=http://localhost:4000/graphql
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGlkYXNtYmFsYW55YUBnbWFpbC5jb20iLCJpYXQiOjE1ODg0NDg4NzIsImV4cCI6MTU4ODQ0OTc3Mn0.Iroi13utZdOWtD2L7lCyKDt733uIh5n6D09PTHoqo_w
+@server=http://localhost:4000
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGlkYXNtYmFsYW55YUBnbWFpbC5jb20iLCJpYXQiOjE1ODg1MDc2MTgsImV4cCI6MTU4ODUwODUxOH0.bdIlxzYpIXh_PFOHI2DsN6bzRivTJaT0QSR8Wxt3M1k
+@refreshToken=
 
-POST {{server}}
+POST {{server}}/graphql
 Content-Type: application/json
 X-Request-Type: GraphQL
 
@@ -23,7 +24,7 @@ mutation {
 }
 ###
 
-POST {{server}}
+POST {{server}}/graphql
 Content-Type: application/json
 X-Request-Type: GraphQL
 
@@ -34,10 +35,15 @@ mutation {
 }
 ###
 
-POST {{server}}
+POST  {{server}}/refresh_token
+Content-Type: application/json
+
+
+###
+POST {{server}}/graphql
 Content-Type: application/json
 X-Request-Type: GraphQL
-Authorization: {{token}}
+Authorization: {{accessToken}}
 
 query {
   me{
