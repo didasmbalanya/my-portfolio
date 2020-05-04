@@ -27,9 +27,9 @@ export class LoginResolver {
     const valid = passCompare(password, user.password);
     if (!valid) throw Error(invalidLogin);
     const accessToken = getAccessToken({ userId: user.id, email: user.email });
-    
+
     // send on a cookie
-    sendRefreshToken(user.id, res);
+    sendRefreshToken(user.id, user.tokenVersion, res);
 
     return { accessToken };
   }

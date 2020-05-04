@@ -1,5 +1,5 @@
 @server=http://localhost:4000
-@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGlkYXNtYmFsYW55YUBnbWFpbC5jb20iLCJpYXQiOjE1ODg1MDc2MTgsImV4cCI6MTU4ODUwODUxOH0.bdIlxzYpIXh_PFOHI2DsN6bzRivTJaT0QSR8Wxt3M1k
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiZGlkYXNtYmFsYW55YUBnbWFpbC5jb20iLCJpYXQiOjE1ODg1OTU3MjUsImV4cCI6MTU4ODU5NjYyNX0.swIj7TgD-KI_09kYr47hXCLHb-e9LG-yAoxz4lUCRxM
 @refreshToken=
 
 POST {{server}}/graphql
@@ -59,4 +59,12 @@ query {
     phone
     phoneAlt
   }
+}
+###
+POST {{server}}/graphql
+Content-Type: application/json
+X-Request-Type: GraphQL
+
+mutation {
+  expireRefreshToken(userId:1)
 }

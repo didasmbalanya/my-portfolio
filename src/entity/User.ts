@@ -54,4 +54,7 @@ export class User extends BaseEntity {
   @Field()
   @Column()
   phoneAlt: string;
+
+  @Column("int", { default: 0 })
+  tokenVersion: number;
 }
