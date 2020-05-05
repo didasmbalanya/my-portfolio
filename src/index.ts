@@ -27,12 +27,12 @@ export const startServer = async () => {
       context: ({ req, res }) => ({ req, res }),
     });
 
-    const cors = {
-      credentials: true,
-      origin: process.env.NODE_ENV === "test" ? "*" : process.env.FRONTEND_HOST,
-    };
+    // const cors = {
+    //   credentials: true,
+    //   origin: process.env.NODE_ENV === "test" ? "*" : process.env.FRONTEND_HOST,
+    // };
 
-    apolloServer.applyMiddleware({ app, cors });
+    apolloServer.applyMiddleware({ app });
     return app.listen(PORT, () => console.log(`running on: ${PORT}`));
   } catch (error) {
     return console.log("Starting app Error\n", error);

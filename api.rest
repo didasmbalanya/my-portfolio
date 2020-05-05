@@ -6,7 +6,7 @@ POST {{server}}/graphql
 Content-Type: application/json
 X-Request-Type: GraphQL
 
-mutation {
+mutation register($registerInput: registerInput){
   register(registerInput:{
     title:"    Software Engineer",
     description: "Mainly Backend Engineer",

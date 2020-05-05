@@ -12,14 +12,16 @@ export class UserResolver {
   }
 
   @Mutation(() => Boolean)
-  @UseMiddleware(({args},next) => {
-    sanitize(args.registerInput)
+  @UseMiddleware(({ args }, next) => {
+    sanitize(args.registerInput);
     args.registerInput.gender = args.registerInput.gender.toLowerCase();
-    return next()
+    return next();
   })
   async register(@Arg("registerInput") registerInput: RegisterInput) {
+    console.log(">>>>>>> rec", registerInput);
     registerInput.password = await hasher(registerInput.password);
     const user = await User.create(registerInput).save();
+    console.log(">>>>>>> created", user);
     return !!user;
   }
 }

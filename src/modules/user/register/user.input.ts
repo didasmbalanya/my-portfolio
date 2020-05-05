@@ -1,5 +1,5 @@
 import { InputType, Field } from "type-graphql";
-import { Trim, NormalizeEmail } from "class-sanitizer";
+import { Trim } from "class-sanitizer";
 import {
   haveUppercase,
   haveDigits,
@@ -9,7 +9,6 @@ import {
   Length,
   IsEmail,
   Matches,
-  IsFQDN,
   IsPhoneNumber,
   IsIn,
 } from "class-validator";
@@ -21,27 +20,22 @@ export class RegisterInput {
   title: string;
 
   @Field({ nullable: true })
-  @Length(2, 255)
   @Trim()
   description?: string;
 
   @Field()
-  @Length(2, 255)
   @Trim()
   firstname: string;
 
   @Field()
-  @Length(2, 255)
   @Trim()
   lastname: string;
 
   @Field({ nullable: true })
-  @Length(2, 255)
   @Trim()
   username: string;
 
   @Field()
-  @NormalizeEmail()
   @Trim()
   @IsEmail()
   email: string;
@@ -60,12 +54,10 @@ export class RegisterInput {
   password: string;
 
   @Field({ nullable: true })
-  @IsFQDN()
   @Trim()
   github: string;
 
   @Field({ nullable: true })
-  @IsFQDN()
   @Trim()
   linkedin: string;
 
