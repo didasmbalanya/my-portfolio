@@ -6,13 +6,13 @@ import { Resolver, Query, UseMiddleware, Ctx } from "type-graphql";
 
 @Resolver()
 export class MeReslver {
-  @Query(() => User)
+  @Query(() => User, { nullable: true })
   @UseMiddleware(isAuth)
   async me(@Ctx() { payload }: MyContext) {
     if (!payload || !payload.userId) throw Error(noAuth);
 
-  const user = await User.findOne(payload.userId)
+    const user = await User.findOne(payload.userId);
 
-    return user;
+    return user || null;
   }
 }

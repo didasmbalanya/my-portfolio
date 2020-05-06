@@ -67,7 +67,6 @@ export class RegisterInput {
   phone: string;
 
   @Field({ nullable: true })
-  @IsPhoneNumber(null)
   @Trim()
   phoneAlt: string;
 }

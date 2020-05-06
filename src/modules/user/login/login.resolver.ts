@@ -31,6 +31,6 @@ export class LoginResolver {
     // send on a cookie
     sendRefreshToken(user.id, user.tokenVersion, res);
 
-    return { accessToken };
+    return { accessToken, user };
   }
 }

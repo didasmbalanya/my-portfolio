@@ -18,10 +18,8 @@ export class UserResolver {
     return next();
   })
   async register(@Arg("registerInput") registerInput: RegisterInput) {
-    console.log(">>>>>>> rec", registerInput);
     registerInput.password = await hasher(registerInput.password);
     const user = await User.create(registerInput).save();
-    console.log(">>>>>>> created", user);
     return !!user;
   }
 }

@@ -22,7 +22,13 @@ export const jwtVerifyCustom = (token: string, tokenType = "access") => {
   return verify(token, secret);
 };
 
-export const sendRefreshToken = (userId: number , tokenVersion: number, res: Response) => {
+export const sendRefreshToken = (
+  userId: number,
+  tokenVersion: number,
+  res: Response
+) => {
   const refreshToken = getRefreshToken({ userId, tokenVersion });
-  res.cookie(cookiename, refreshToken);
+  res.cookie(cookiename, refreshToken, {
+    path: "refresh_token",
+  });
 };
